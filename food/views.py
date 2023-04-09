@@ -1,18 +1,21 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views import generic
 
 from .forms import FoodItemForm
 from .models import FoodItem
-from django.template import loader
 
 
-# Create your views here.
-def index(request):
-    item_list = FoodItem.objects.all()
-    context = {
-        'item_list': item_list,
-    }
-    return render(request, 'food/index.html', context)
+
+class IndexClassListView(generic.ListView):
+    model = FoodItem
+    template_name = 'food/index.html'
+    context_object_name = 'item_list'
+
+class FoodItemDetailView(generic.DetailView):
+    model = FoodItem
+    template_name = 'food/detail.html'
+    # context_object_name = 'item'
 
 def items(request):
     return HttpResponse("You're at the food items.")
