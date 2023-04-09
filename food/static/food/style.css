@@ -1,0 +1,27 @@
+.card-img-top {
+    height: 300px; /* Adjust this value to your desired height */
+    object-fit: cover;
+}
+
+.user {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.one {
+    background-image: url('https://via.placeholder.com/400x200');
+}
+
+.two {
+    background-image: url('https://via.placeholder.com/200x200');
+}
+
+.three {
+    background-image: url('https://via.placeholder.com/200x400');
+}

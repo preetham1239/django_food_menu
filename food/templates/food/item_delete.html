@@ -1,0 +1,30 @@
+{#{% extends 'food/base.html' %}#}
+{#{% block body %}#}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#        <div class="container mt-3">#}
+{#            <div class="alert alert-success alert-dismissible fade show" role="alert">#}
+{#                <h4 class="alert-heading">Are you sure you want to delete?</h4>#}
+{#                <p class="mb-0">You can continue to manage your items or return to the main page.</p>#}
+{#                <button type="submit" class="btn-close" data-bs-dismiss="alert" aria-label="Close">Submit</button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </form>#}
+{#{% endblock %}#}
+
+{% extends 'food/base.html' %}
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="container mt-3">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Are you sure you want to delete?</h4>
+                <p>You can continue to manage your items or return to the main page.</p>
+                <hr>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

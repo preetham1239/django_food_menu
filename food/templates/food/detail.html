@@ -1,0 +1,13 @@
+{% extends 'food/base.html' %}
+{% block body %}
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div>
+            <img src="{{ item.item_image }}" height="400" width="400" alt="{{ item.item_name }}" class="img-fluid mb-3">
+            <h3>{{ item.item_name }}</h3>
+            <h3>{{ item.item_desc }}</h3>
+            <h3>${{ item.item_price }}</h3>
+            <a href="{% url 'food:delete_item' item.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'food:update_item' item.id %}" class="btn btn-primary">Update</a>
+        </div>
+    </div>
+{% endblock %}
