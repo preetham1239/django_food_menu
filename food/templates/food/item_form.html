@@ -1,8 +1,31 @@
 {% extends 'food/base.html' %}
 {% block body %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit" />
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Your Form Title</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="form-group mb-3">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                                    <input type="{{ field.field.widget.input_type }}" class="form-control{% if field.errors %} is-invalid{% endif %}" id="{{ field.id_for_label }}" name="{{ field.html_name }}" placeholder="Enter your {{ field.label }}" value="{{ field.value|default:'' }}" {% if field.field.required %}required{% endif %}>
+                                    {% for error in field.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ error }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
