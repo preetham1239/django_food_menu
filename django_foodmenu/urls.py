@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+
+import food.views
 from django_foodmenu import settings
 from users import views as user_views
 from django.contrib.auth import views as auth_views
@@ -26,6 +28,7 @@ This class is used to configure the URLS.
 We add static, because the static files are in a separate folder and configured here in the admin app.
 """
 urlpatterns = [
+    path('', food.views.IndexClassListView.as_view(), name='index'),
     path('admin/', admin.site.urls),
     path('food/', include('food.urls')),
     path('register/', user_views.register, name='register'),
