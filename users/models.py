@@ -4,6 +4,10 @@ from django.db import models
 # Create your models here.
 
 class Profile(models.Model):
+    """
+    This class is used to configure the profile model.
+
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     location = models.CharField(max_length=100, blank=True, default='')
